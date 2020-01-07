@@ -34,8 +34,9 @@ public class NicknameActivity extends AppCompatActivity implements View.OnClickL
         startActivityForResult(intent1,RC_AGEACTIVITY);
         SharedPreferences pref = getSharedPreferences("test", MODE_PRIVATE);
         pref.edit()
-                .putString("USER",nickname.getText().toString())
+                .putString("NICKNAME",nickname.getText().toString())
                 .commit();
+        finish();
     }
 
     @Override

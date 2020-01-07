@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         name = findViewById(R.id.name);
         age = findViewById(R.id.age);
         gender = findViewById(R.id.gender);
@@ -35,6 +36,18 @@ public class MainActivity extends AppCompatActivity {
         if(requestCode == RC_NICKNAMEACTIVITY){
             if(resultCode != RESULT_OK) {
                 finish();
+            }else{
+
+                String nickname = getSharedPreferences("test", MODE_PRIVATE)
+                        .getString("NICKNAME", " ");
+                String Age  = getSharedPreferences("test", MODE_PRIVATE)
+                        .getString("AGE", "  ");
+                String Gender  = getSharedPreferences("test", MODE_PRIVATE)
+                        .getString("GENDER", "  ");
+                name.setText(nickname);
+                age.setText(Age);
+                gender.setText(Gender);
+
             }
 
         }

@@ -1,5 +1,6 @@
 package com.fju.member;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -32,7 +33,20 @@ public class AgeActivity extends AppCompatActivity implements View.OnClickListen
         startActivityForResult(intent2,RC_GENDERACTIVITY);
         SharedPreferences pref = getSharedPreferences("test", MODE_PRIVATE);
         pref.edit()
-                .putString("USER",ed_age.getText().toString())
+                .putString("AGE",ed_age.getText().toString())
                 .commit();
+        finish();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == RC_GENDERACTIVITY) {
+            if (resultCode != RESULT_OK) {
+                finish();
+            } else {
+
+            }
+        }
     }
 }
